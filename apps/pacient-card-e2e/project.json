@@ -19,12 +19,18 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/pacient-card-e2e/**/*.{js,ts}"]
+        "lintFilePatterns": [
+          "apps/pacient-card-e2e/**/*.{js,ts}"
+        ]
       }
     }
   },
   "tags": [],
-  "implicitDependencies": ["pacient-card"]
+  "implicitDependencies": [
+    "pacient-card"
+  ]
 }
