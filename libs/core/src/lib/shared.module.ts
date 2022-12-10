@@ -14,6 +14,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NavigationComponent } from './navigation/navigation.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 const components = [NavigationComponent]
 
@@ -21,6 +23,7 @@ const modules = [
   CommonModule,
   MatButtonModule,
   MatToolbarModule,
+  MatSortModule,
   MatIconModule,
   LayoutModule,
   MatSidenavModule,
@@ -31,7 +34,9 @@ const modules = [
   MatFormFieldModule,
   MatInputModule,
   MatSnackBarModule,
-  RouterModule
+  RouterModule,
+  MatTableModule,
+
 ];
 
 @NgModule({

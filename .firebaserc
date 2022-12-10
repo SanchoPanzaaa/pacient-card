@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "pacient-card": {
+      "hosting": {
+        "pacient-card": [
+          "pacient-card"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "pacient-card"
+  }
+}

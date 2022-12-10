@@ -1,0 +1,36 @@
+
+
+
+:host {
+  text-align: center;
+
+
+  div {
+    display:grid;
+    place-content: center;
+
+
+    button {
+      min-width: 200px;
+      place-self: center;
+      margin-bottom: 20px;
+
+      .mat-mdc-button {
+        background-color: red;
+      }
+
+      img {
+
+        width: 1.27em;
+      }
+    }
+
+    span {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.logout {
+  padding-top: 5em;
+}

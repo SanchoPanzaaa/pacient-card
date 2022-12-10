@@ -3,7 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/pacient-card/src",
-  "prefix": "pacient-card",
+  "prefix": "pcard",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -91,6 +91,16 @@
       "options": {
         "jestConfig": "apps/pacient-card/jest.config.ts",
         "passWithNoTests": true
+      }
+    },
+    "deploy": {
+      "executor": "@angular/fire:deploy",
+      "options": {
+        "prerender": false,
+        "ssr": false,
+        "browserTarget": "pacient-card:build:production",
+        "firebaseProject": "pacient-card",
+        "firebaseHostingSite": "pacient-card"
       }
     }
   },

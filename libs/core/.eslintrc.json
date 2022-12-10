@@ -13,7 +13,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "pacientCard",
+            "prefix": "pcard",
             "style": "camelCase"
           }
         ],
@@ -21,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "pacient-card",
+            "prefix": "pcard",
             "style": "kebab-case"
           }
         ]

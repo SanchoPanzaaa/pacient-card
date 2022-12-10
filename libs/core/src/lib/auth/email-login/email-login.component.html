@@ -1,0 +1,97 @@
+<mat-card>
+  <div *ngIf="isSignup">
+    <h3>Create Account</h3>
+
+    <button mat-stroked-button (click)="changeType(authType.Login)">
+      Už máte účet?
+    </button>
+  </div>
+
+  <div *ngIf="isLogin">
+    <h3>Sign In</h3>
+    <button class="new-user" size="small" mat-stroked-button (click)="changeType(authType.SignUp)">
+      Nový použivateľ
+    </button>
+  </div>
+
+  <div *ngIf="isPasswordReset">
+    <h3>Zabudol som heslo</h3>
+    <button size="small" mat-button (click)="changeType(authType.Login)">Back</button>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input
+        matInput
+        formControlName="email"
+        type="email"
+        placeholder="Váš email"
+        autocomplete="off"
+      />
+
+      <mat-error *ngIf="email?.invalid && email?.dirty">
+        Musíte uviesť existujúci email
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="!isPasswordReset">
+      <input
+        matInput
+        formControlName="password"
+        type="password"
+        placeholder="Vaše heslo"
+        autocomplete="off"
+      />
+
+      <mat-error *ngIf="password?.invalid && password?.dirty">
+        Vaše heslo musí byť min. 6 písmen
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field
+      [color]="passwordDoesMatch ? 'accent' : 'warn'"
+      *ngIf="isSignup"
+    >
+      <input
+        matInput
+        formControlName="passwordConfirm"
+        type="password"
+        placeholder="Confirm password"
+        autocomplete="off"
+      />
+
+      <mat-error *ngIf="passwordConfirm?.dirty && !passwordDoesMatch">
+        Heslo nesedí
+      </mat-error>
+    </mat-form-field>
+
+    <mat-error class="server-error">{{ serverMessage }}</mat-error>
+
+    <button
+      *ngIf="isPasswordReset"
+      mat-stroked-button
+      type="submit"
+      [disabled]="loading"
+    >
+      Odoslať email pre reset
+    </button>
+
+    <button
+      *ngIf="!isPasswordReset"
+      mat-raised-button
+      color="accent"
+      type="submit"
+      [disabled]="form.invalid || !passwordDoesMatch || loading"
+    >
+      Potvrďte
+    </button>
+  </form>
+
+  <button
+    mat-button
+    *ngIf="isLogin && !isPasswordReset"
+    (click)="changeType(authType.Reset)"
+  >
+    Zabudli ste heslo?
+  </button>
+</mat-card>

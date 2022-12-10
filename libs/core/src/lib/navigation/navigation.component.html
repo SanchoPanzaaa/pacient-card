@@ -30,7 +30,7 @@
       <span class="fill-space"></span>
       <div *ngIf="(isHandset$ | async) === false">
         <ng-container *ngFor="let item of navItems">
-          <a mat-button >
+          <a mat-button [routerLink]="item.url" >
             <mat-icon>{{ item.icon ?? null }}</mat-icon>
             {{ item.title }}
           </a>

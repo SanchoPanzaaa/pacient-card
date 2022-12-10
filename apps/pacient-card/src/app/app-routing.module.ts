@@ -4,10 +4,14 @@ import { HomeComponent } from 'libs/core/src/lib/home/home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  // {
-  //   path: 'login',
-  //   loadChildren: () => import('./user/user.module').then(m => m.UserModule)
-  // },
+  {
+    path: 'login',
+    loadChildren: () => import('libs/core/src/lib/auth/auth.module').then(m => m.AuthModule)
+  },
+  {
+    path: 'list-pacient',
+    loadChildren: () => import('libs/core/src/lib/pacient-list/pacient-list.module').then(m => m.PacientListModule)
+  },
 ];
 
 @NgModule({

@@ -5,13 +5,13 @@ import { map, shareReplay } from 'rxjs/operators';
 import { NavItem } from './nav-item.model';
 
 @Component({
-  selector: 'pacient-card-navigation',
+  selector: 'pcard-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent {
   protected navItems: NavItem[] = [
-    { id: '1', title: 'Zoznam pacientov', roles: [], url: '', icon: 'view_list'},
+    { id: '1', title: 'Zoznam pacientov', roles: [], url: '/list-pacient', icon: 'view_list'},
     { id: '2', title: 'Vytvor kartu pacienta', roles: [], url: '', icon: 'add'},
     { id: '3', title: 'Login', roles: [], url: '', icon: ''},
   ]
