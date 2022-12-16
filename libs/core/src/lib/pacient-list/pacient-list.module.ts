@@ -3,15 +3,22 @@ import { NgModule } from '@angular/core';
 import { PacientListRoutingModule } from './pacient-list-routing.module';
 import { SharedModule } from '../shared.module';
 import { PacientListComponent } from './pacient-list.component';
+import { TableDetailComponent } from './patient-detail/patient-detail.component';
 
 
 @NgModule({
   declarations: [
     PacientListComponent,
+    TableDetailComponent,
   ],
   imports: [
     SharedModule,
-    PacientListRoutingModule
+    PacientListRoutingModule,
+
+  ],
+  exports: [
+    PacientListComponent,
+    TableDetailComponent
   ]
 })
 export class PacientListModule { }

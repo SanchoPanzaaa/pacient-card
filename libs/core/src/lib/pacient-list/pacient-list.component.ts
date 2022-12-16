@@ -1,57 +1,39 @@
-import { AfterViewInit, Component, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
-import { MatSort, Sort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { map, Observable, tap } from 'rxjs';
-import { PatientDataService } from '../shared/services/patient-data.service';
+import { animate, state, style, transition, trigger } from "@angular/animations";
+import { Component, ViewChild } from "@angular/core";
+import { MatSort } from "@angular/material/sort";
+import { Observable } from "rxjs";
+import { PatientDataService } from "../shared/services/patient-data.service";
+import { ScreenSizeService } from "../shared/services/screen.service";
+import { PatientColumnNames, PatientModel } from "./patient.model";
 
-export enum Severity {
-  Minor = 'minor',
-  Medium = 'medium',
-  Critical = 'critical',
-}
 
-export interface Diseases {
-  id: string;
-  name: string;
-  severity: Severity;
-  description: string;
-  examples?: string[];
-  medicament?: string[];
-}
-
-export interface Visit {
-  id: string;
-  lastVisit: Date;
-  totalAmount: number;
-}
-
-export interface PatientModel {
-  id: string;
-  firstName: string;
-  lastName: string;
-
-  diseases: Diseases[];
-  lastVisit: Visit;
-  allVisits: Visit[];
-
-  gdprSuccess: boolean;
-}
 
 @Component({
   selector: 'pcard-pacient-list',
   templateUrl: './pacient-list.component.html',
   styleUrls: ['./pacient-list.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class PacientListComponent {
   @ViewChild(MatSort, {static: false}) sort!: MatSort;
 
   protected data$: Observable<PatientModel[]>;
-  protected clickedRow = new Set<PatientModel>();
+
   protected selectedRow: PatientModel | null = null;
-  protected displayedColumns: string[] = ['id', 'firstName', 'lastName']
+  protected displayedColumns: string[] = PatientColumnNames;
+  protected columnsWithExtend = [...this.displayedColumns, 'expand']
+
+
+
 
   /* Lifecycle hooks */
-  constructor(private patientService: PatientDataService) {
+  constructor(private patientService: PatientDataService, private layoutService: ScreenSizeService) {
     this.data$ = this.patientService.getAllPatients();
 
   }

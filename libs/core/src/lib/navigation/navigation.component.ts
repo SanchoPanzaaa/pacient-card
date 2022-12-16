@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
-import { NavItem } from './nav-item.model';
+import { NavigationMain, NavItem } from './nav-item.model';
+import { ScreenSizeService } from '../shared/services/screen.service';
 
 @Component({
   selector: 'pcard-navigation',
@@ -10,20 +9,14 @@ import { NavItem } from './nav-item.model';
   styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent {
-  protected navItems: NavItem[] = [
-    { id: '1', title: 'Zoznam pacientov', roles: [], url: '/list-pacient', icon: 'view_list'},
-    { id: '2', title: 'Vytvor kartu pacienta', roles: [], url: '', icon: 'add'},
-    { id: '3', title: 'Login', roles: [], url: '', icon: ''},
-  ]
+  protected navItems: NavItem[] = NavigationMain;
 
-  protected isHandset$: Observable<boolean> = this.breakpointObserver.observe([Breakpoints.Handset])
-    .pipe(
-      map(result => result.matches),
-      shareReplay()
-    );
+  protected isHandset$: Observable<string>;
 
   constructor(
-    private breakpointObserver: BreakpointObserver
-    ) {}
+    private layoutService: ScreenSizeService
+    ) {
+      this.isHandset$ = layoutService.viewWidth$;
+    }
 
 }

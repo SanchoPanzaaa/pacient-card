@@ -6,22 +6,53 @@
           [dataSource]="data"
           matSortDirection="asc"
           multiTemplateDataRows
-          class="patient-list" >
+          class="table" >
 
           <ng-container [matColumnDef]="col"
-                        *ngFor="let col of displayedColumns; let i = index;">
+                        *ngFor="let col of displayedColumns">
 
                         <th mat-header-cell *matHeaderCellDef mat-sort-header="{{ col }}">
                         {{ col }}
                         </th>
                         <td mat-cell  *matCellDef="let element">{{ element[col] }}</td>
           </ng-container>
+          <ng-container matColumnDef="expand" stickyEnd>
+            <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button aria-label="expand row"
+              (click)="(selectedRow = selectedRow === element ? null : element); $event.stopPropagation()">
+                <mat-icon *ngIf="selectedRow !== element">keyboard_arrow_down</mat-icon>
+                <mat-icon *ngIf="selectedRow === element">keyboard_arrow_up</mat-icon>
+              </button>
+            </td>
+          </ng-container>
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row
-              (click)="execute(row)"
-              [class.demo-row-is-clicked]="clickedRow.has(row)"
-              *matRowDef="let row; columns: displayedColumns"  ></tr>
+          <ng-container matColumnDef="expandedDetail">
+            <td  mat-cell *matCellDef="let element" >
+              <div class="detail-grid"
+                   [@detailExpand]="element === selectedRow ? 'expanded' : 'collapsed'">
+
+                  <div class="title">
+                    {{element.firstName}} {{element.lastName}}
+                  </div>
+                  <div class="example-element-weight">
+                    {{element.weight}}
+                  </div>
+
+                <div class="example-element-description">
+                  {{element.profession}}
+                </div>
+              </div>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="columnsWithExtend"></tr>
+          <tr mat-row *matRowDef="let element; columns: columnsWithExtend;"
+              class="example-element-row"
+              [class.example-expanded-row]="selectedRow === element"
+              (click)="selectedRow = selectedRow === element ? null : element">
+          </tr>
+          <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="patient-detail"></tr>
+
   </table>
 
 </ng-container>

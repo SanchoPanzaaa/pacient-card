@@ -1,4 +1,38 @@
 :host {
   display: grid;
   place-content: center;
+
+
+
+
+}
+.table {
+  min-width: 350px;
+}
+
+tr.patient-detail {
+  height: 0;
+}
+
+.example-element-row td {
+  border-bottom-width: 1px;
+}
+
+
+
+
+
+
+.title {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: normal;
+}
+
+.example-element-description {
+  padding: 16px;
+}
+
+.example-element-description-attribution {
+  opacity: 0.5;
 }
