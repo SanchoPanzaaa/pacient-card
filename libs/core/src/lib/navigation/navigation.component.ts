@@ -16,7 +16,7 @@ export class NavigationComponent {
   constructor(
     private layoutService: ScreenSizeService
     ) {
-      this.isHandset$ = layoutService.viewWidth$;
+      this.isHandset$ = this.layoutService.viewWidth$;
     }
 
 }

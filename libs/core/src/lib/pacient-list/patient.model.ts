@@ -1,23 +1,38 @@
-export interface PatientModel {
-  id: string;
-  personalInformations: PersonalInformations;
 
 
-  diseases: Diseases[];
-  lastVisit: Visit;
-  allVisits: Visit[];
 
-  gdprSuccess: boolean;
+export interface Corectors {
+  id:string;
+  name: string;
+  usage: string;
 }
 
+export interface Product {
+  id: string;
+  name: string;
+  description: string;
+  brand: string;
+  price: number;
+
+  usage: string;
+  inWarehouse: number; // how Products of this brand I keep
+}
+
+export interface HealthProblem {
+  id: string;
+  name: string;
+  severity: Severity;
+}
+
+
 export interface PersonalInformations {
-  firstName: string;
-  lastName: string;
-  contact: number | string;
+  name: string;
+  phone: string;
   email: string;
   profession: Profession;
   weight: number;
   height: number;
+  birthDate: Date;
 }
 
 export enum Profession {
@@ -30,26 +45,86 @@ export enum Severity {
   Critical = 'critical',
 }
 
-export interface Diseases {
-  id: string;
-  name: string;
-  severity: Severity;
-  description: string;
-  examples?: string[];
-  medicament?: string[];
-}
-
 export interface Visit {
   id: string;
-  lastVisit: Date;
-  totalAmount: number;
+  duration: number; // timestamp
+  date: Date;
+
 }
 
 export const PatientColumnNames = [
-  'firstName',
-  'lastName',
-  'lastVisit',
-  'visitsCounter',
-  'email',
+  'Meno',
+  'Posledná návšteva',
+  'Problem',
+  'Profesia',
+  'Email',
+]
+export interface TableHeader {
+  key: string;
+  label: string;
+  className?: string;
+}
+
+export const tableDefPatient: TableHeader[] = [
+  {
+    key: 'name',
+    label: 'Meno',
+  },    {
+    key: 'visits[0]',
+    label: 'Posledná návšteva',
+  },    {
+    key: 'disease.name',
+    label: 'Problem',
+  },    {
+    key: 'proffesion',
+    label: 'Profesia',
+  },{
+    key: 'email',
+    label: 'Email',
+  },
 ]
 
+export const detailPatientLabel: LabeledValue[] = [
+  {
+    label: 'Meno',
+    value: 'name',
+    type: 'string',
+  },
+  {
+    label: 'Email',
+    value: 'email',
+    type: 'string',
+  },
+  {
+    label: 'Profesia',
+    value: 'profession',
+    type: 'Proffesion',
+  },
+  {
+    label: 'Váha',
+    value: 'weight',
+    type: 'number',
+  },
+  {
+    label: 'Výška',
+    value: 'height',
+    type: 'number',
+  },
+  {
+    label: 'Dátum narodenia',
+    value: 'birthDate',
+    type: typeof Date,
+  },
+  {
+    label: 'Telefon',
+    value: 'phone',
+    type: 'string',
+  },
+
+]
+
+export interface LabeledValue {
+  type: string;
+  label: string;
+  value: string;
+}

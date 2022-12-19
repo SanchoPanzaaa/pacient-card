@@ -6,17 +6,16 @@
 
 
 }
-.table {
+table {
   min-width: 350px;
 }
 
 tr.patient-detail {
   height: 0;
+  text-decoration: none;
 }
 
-.example-element-row td {
-  border-bottom-width: 1px;
-}
+
 
 
 

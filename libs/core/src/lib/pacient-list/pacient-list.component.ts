@@ -1,12 +1,12 @@
 import { animate, state, style, transition, trigger } from "@angular/animations";
+
 import { Component, ViewChild } from "@angular/core";
 import { MatSort } from "@angular/material/sort";
 import { Observable } from "rxjs";
+import { PatientModel } from "../shared/interfaces/patient.interface";
 import { PatientDataService } from "../shared/services/patient-data.service";
 import { ScreenSizeService } from "../shared/services/screen.service";
-import { PatientColumnNames, PatientModel } from "./patient.model";
-
-
+import { tableDefPatient, TableHeader } from "./patient.model";
 
 @Component({
   selector: 'pcard-pacient-list',
@@ -26,8 +26,8 @@ export class PacientListComponent {
   protected data$: Observable<PatientModel[]>;
 
   protected selectedRow: PatientModel | null = null;
-  protected displayedColumns: string[] = PatientColumnNames;
-  protected columnsWithExtend = [...this.displayedColumns, 'expand']
+  protected tableDef: TableHeader[] = tableDefPatient;
+  protected columnsWithExtend = [...this.tableDef.map(c => c.label), 'expand']
 
 
 

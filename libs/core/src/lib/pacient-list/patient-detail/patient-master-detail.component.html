@@ -1,0 +1,19 @@
+
+<mat-card *ngIf="selectedRow">
+  <mat-card-content >
+      <div class="personal-informations" *ngFor="let item of selectedRow">
+        <ui-labeled-value
+          [config]="{
+            label: item.label,
+            value: item.value,
+            type: item.type}">
+        </ui-labeled-value>
+      </div>
+  </mat-card-content>
+</mat-card>
+
+
+
+
+
+

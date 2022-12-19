@@ -1,6 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable, shareReplay } from 'rxjs';
+import { map, Observable, shareReplay } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,6 @@ export class ScreenSizeService {
         let currentView = '';
         for (const current of Object.keys(state.breakpoints)) {
           if (state.breakpoints[current]) {
-            console.log(this.layoutControlMap.get(current))
             currentView = this.layoutControlMap.get(current) ?? 'undefined';
           }
         }

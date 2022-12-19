@@ -8,13 +8,13 @@
           multiTemplateDataRows
           class="table" >
 
-          <ng-container [matColumnDef]="col"
-                        *ngFor="let col of displayedColumns">
+          <ng-container *ngFor="let col of tableDef"
+                        [matColumnDef]="col.label">
 
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header="{{ col }}">
-                        {{ col }}
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header="{{ col.label }}">
+                        {{ col.label }}
                         </th>
-                        <td mat-cell  *matCellDef="let element">{{ element[col] }}</td>
+                        <td mat-cell  *matCellDef="let element">{{ element[col.key]  }}</td>
           </ng-container>
           <ng-container matColumnDef="expand" stickyEnd>
             <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
@@ -32,16 +32,8 @@
               <div class="detail-grid"
                    [@detailExpand]="element === selectedRow ? 'expanded' : 'collapsed'">
 
-                  <div class="title">
-                    {{element.firstName}} {{element.lastName}}
-                  </div>
-                  <div class="example-element-weight">
-                    {{element.weight}}
-                  </div>
+                  <pcard-table-detail [selectedRow]="element"></pcard-table-detail>
 
-                <div class="example-element-description">
-                  {{element.profession}}
-                </div>
               </div>
             </td>
           </ng-container>

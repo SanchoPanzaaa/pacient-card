@@ -3,7 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import firebase from "firebase/compat/app";
 import { from, map, Observable } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
-import { PatientModel } from '../../pacient-list/patient.model';
+import { PatientModel } from '../interfaces/patient.interface';
 
 @Injectable({
   providedIn: 'root'

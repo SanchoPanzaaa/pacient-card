@@ -15,7 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@pacient-card/core": ["libs/core/src/index.ts"]
+      "@pacient-card": ["libs/eshop/src/index.ts"],
+      "@pacient-card/core": ["libs/core/src/index.ts"],
+      "@pacient-card/reusable-ui": ["libs/reusable-ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
