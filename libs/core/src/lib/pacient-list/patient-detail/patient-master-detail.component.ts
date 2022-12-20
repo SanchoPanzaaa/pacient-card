@@ -2,7 +2,7 @@
 import { SimpleChanges } from "@angular/core";
 import { OnChanges } from "@angular/core";
 import { Component, Input } from "@angular/core";
-import { detailPatientLabel, LabeledValue, PersonalInformations } from "../patient.model";
+import { InterfaceKeyValue } from "@pacient-card/reusable-ui";
 
 
 @Component({
@@ -13,16 +13,22 @@ import { detailPatientLabel, LabeledValue, PersonalInformations } from "../patie
 export class TableDetailComponent<T> implements OnChanges {
   @Input() selectedRow: T | null = null;
 
-  protected labeledValues: LabeledValue[] | null = null;
+  protected labeledValues: InterfaceKeyValue<T>[] | null = null;
+
 
   ngOnChanges(changes:SimpleChanges): void {
     if(changes['selectedRow']?.currentValue) {
       this.selectedRow = changes['selectedRow']?.currentValue;
-      
-      this.labeledValues?.push()
+      this.labeledValues = this.interfaceToKeyValue(this.selectedRow as T & { [key: string]: unknown });
     }
+  }
 
-
+  interfaceToKeyValue<T>(obj: T & { [key: string]: unknown }): InterfaceKeyValue<T>[] {
+    return Object.getOwnPropertyNames(obj).map((key) =>
+      ({ label: key as keyof T ,
+         value: obj[key]  as T[keyof T]
+      }));
   }
 
 }
+

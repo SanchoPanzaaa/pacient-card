@@ -88,43 +88,37 @@ export const detailPatientLabel: LabeledValue[] = [
   {
     label: 'Meno',
     value: 'name',
-    type: 'string',
   },
   {
     label: 'Email',
     value: 'email',
-    type: 'string',
   },
   {
     label: 'Profesia',
     value: 'profession',
-    type: 'Proffesion',
   },
   {
     label: 'Váha',
     value: 'weight',
-    type: 'number',
   },
   {
     label: 'Výška',
     value: 'height',
-    type: 'number',
   },
   {
     label: 'Dátum narodenia',
     value: 'birthDate',
-    type: typeof Date,
+
   },
   {
     label: 'Telefon',
     value: 'phone',
-    type: 'string',
+
   },
 
 ]
 
 export interface LabeledValue {
-  type: string;
   label: string;
   value: string;
 }

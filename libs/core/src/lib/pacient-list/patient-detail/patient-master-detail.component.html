@@ -1,13 +1,15 @@
 
 <mat-card *ngIf="selectedRow">
   <mat-card-content >
-      <div class="personal-informations" *ngFor="let item of selectedRow">
+      <div class="personal-informations">
+        <h2>Osobné informácie:</h2>
+
+        <!-- Feed any number of keyvalue pairs -->
         <ui-labeled-value
-          [config]="{
-            label: item.label,
-            value: item.value,
-            type: item.type}">
+          [data]="labeledValues">
         </ui-labeled-value>
+
+
       </div>
   </mat-card-content>
 </mat-card>

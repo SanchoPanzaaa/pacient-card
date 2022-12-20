@@ -1,4 +1,5 @@
 :host {
-  display: grid;
-  place-content: center;
+  .mat-card {
+    border: none;
+  }
 }

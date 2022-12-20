@@ -1,24 +1,23 @@
 :host {
   display: grid;
   place-content: center;
-
+  width: 90%;
 
 
 
 }
-table {
-  min-width: 350px;
-}
+
 
 tr.patient-detail {
   height: 0;
   text-decoration: none;
+
+
 }
 
-
-
-
-
+tr.extended-row {
+  color: blue;
+}
 
 
 
@@ -26,12 +25,4 @@ tr.patient-detail {
   font-weight: bold;
   font-size: 40px;
   line-height: normal;
-}
-
-.example-element-description {
-  padding: 16px;
-}
-
-.example-element-description-attribution {
-  opacity: 0.5;
 }

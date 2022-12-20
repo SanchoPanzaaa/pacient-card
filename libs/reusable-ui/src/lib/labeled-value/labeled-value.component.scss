@@ -1,6 +1,14 @@
 :host {
-  display: grid;
-  justify-content: space-between;
+  font-size: large;
+  font-weight: 500;
+  white-space: 3;
+
+  .labeled-value {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+
+  }
 
   .label {
 

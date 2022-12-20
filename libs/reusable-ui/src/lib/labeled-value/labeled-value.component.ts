@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { InterfaceKeyValue } from '../models/labeled-value.model';
 
 export interface LabeledValueConfig {
   label: string;
@@ -12,12 +13,12 @@ export interface LabeledValueConfig {
   templateUrl: './labeled-value.component.html',
   styleUrls: ['./labeled-value.component.scss'],
 })
-export class LabeledValueComponent implements OnChanges {
-  @Input() config: LabeledValueConfig | null = null;
+export class LabeledValueComponent<T> implements OnChanges {
+  @Input() data: InterfaceKeyValue<T>[] | null = null;
 
   ngOnChanges(changes:SimpleChanges): void {
     console.log(changes)
-    this.config = changes['config']?.currentValue;
+
 
   }
 }

@@ -41,6 +41,7 @@ export class PacientListComponent {
 
   /* scope FUNCTIONS */
   protected execute(row: PatientModel) {
+    console.log(row)
     this.selectedRow = row;
   }
 
