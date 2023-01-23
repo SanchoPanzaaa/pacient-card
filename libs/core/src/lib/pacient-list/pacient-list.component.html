@@ -11,10 +11,10 @@
           <ng-container *ngFor="let col of tableDef"
                         [matColumnDef]="col.label">
 
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header="{{ col.label }}">
+                        <th mat-header-cell [hidden]="col.hidden" *matHeaderCellDef mat-sort-header="{{ col.label }}">
                         {{ col.label }}
                         </th>
-                        <td mat-cell  *matCellDef="let element">{{ element[col.key]  }}</td>
+                        <td mat-cell [hidden]="col.hidden" *matCellDef="let element">{{ element[col.key]  }}</td>
           </ng-container>
           <ng-container matColumnDef="expand" stickyEnd>
             <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>

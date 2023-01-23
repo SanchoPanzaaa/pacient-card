@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { NavigationMain, NavItem } from './nav-item.model';
-import { ScreenSizeService } from '../shared/services/screen.service';
+import { LayoutService } from '../shared/services/layout.service';
 
 @Component({
   selector: 'pcard-navigation',
@@ -14,7 +14,7 @@ export class NavigationComponent {
   protected isHandset$: Observable<string>;
 
   constructor(
-    private layoutService: ScreenSizeService
+    private layoutService: LayoutService
     ) {
       this.isHandset$ = this.layoutService.viewWidth$;
     }

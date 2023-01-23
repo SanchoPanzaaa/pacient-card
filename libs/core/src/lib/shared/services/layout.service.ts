@@ -1,11 +1,12 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Injectable } from '@angular/core';
 import { map, Observable, shareReplay } from 'rxjs';
+import { LayoutEnum } from '../interfaces/layout.enum';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ScreenSizeService {
+export class LayoutService {
   public declare viewWidth$: Observable<string>;
 
   layoutControlMap = new Map([
@@ -41,10 +42,4 @@ export class ScreenSizeService {
 
 }
 
-export enum LayoutEnum {
-  XSmall = 'XSmall',//'(max-width: 599.98px)',
-  Small = 'Small',//'(min-width: 600px) and (max-width: 959.98px)',
-  Medium = 'Medium',//'(min-width: 960px) and (max-width: 1279.98px)',
-  Large = 'Large',//'(min-width: 1280px) and (max-width: 1919.98px)',
-  XLarge = 'XLarge',//'(min-width: 1920px)',
-}
+

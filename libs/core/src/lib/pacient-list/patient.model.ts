@@ -62,6 +62,7 @@ export const PatientColumnNames = [
 export interface TableHeader {
   key: string;
   label: string;
+  hidden: boolean;
   className?: string;
 }
 
@@ -69,18 +70,23 @@ export const tableDefPatient: TableHeader[] = [
   {
     key: 'name',
     label: 'Meno',
+    hidden: true,
   },    {
     key: 'visits[0]',
     label: 'Posledná návšteva',
+    hidden: true,
   },    {
     key: 'disease.name',
     label: 'Problem',
+    hidden: true,
   },    {
     key: 'proffesion',
     label: 'Profesia',
+    hidden: true,
   },{
     key: 'email',
     label: 'Email',
+    hidden: true,
   },
 ]
 

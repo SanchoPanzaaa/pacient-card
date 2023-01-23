@@ -5,7 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
-import { ScreenSizeService } from './shared/services/screen.service';
+import { LayoutService } from './shared/services/layout.service';
 
 
 
@@ -18,7 +18,7 @@ import { ScreenSizeService } from './shared/services/screen.service';
   ],
   declarations: [HomeComponent],
   providers: [
-    ScreenSizeService,
+    LayoutService,
   ],
   exports: [SharedModule],
 })
