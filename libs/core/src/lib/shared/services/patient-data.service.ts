@@ -3,22 +3,18 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import firebase from "firebase/compat/app";
 import { from, map, Observable } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
-import { PatientModel } from '../interfaces/patient.interface';
+import { ClientModel } from '../interfaces/patient.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PatientDataService {
+export class ClientService {
   constructor(private authService: AuthService, private db: AngularFirestore) {}
 
-  createNewPatient(data: PatientModel) {
+  createNewPatient(data: ClientModel) {
     return from(this.db.collection('patients').add({
       ...data,
-    })).pipe(
-      map( reference => {
-        console.log(reference)
-      })
-    ).subscribe()
+    }))
   }
 
   /**
@@ -33,14 +29,14 @@ export class PatientDataService {
   /**
    * Get all patients in the system
    */
-  getAllPatients(): Observable<PatientModel[]> {
-    return this.db.collection<PatientModel>('patients').valueChanges()
+  getAllPatients(): Observable<ClientModel[]> {
+    return this.db.collection<ClientModel>('patients').valueChanges()
   }
 
   /**
    * Run a batch write to change the priority of each board for sorting
    */
-  sortPatients(patients: PatientModel[]) {
+  sortPatients(patients: ClientModel[]) {
     const db = firebase.firestore();
     const batch = db.batch();
     const refs = patients.map(patient => db.collection('patients')

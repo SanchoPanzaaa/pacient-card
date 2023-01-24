@@ -25,7 +25,7 @@ export interface HealthProblem {
 }
 
 
-export interface PersonalInformations {
+export class PersonalInformations {
   name: string;
   phone: string;
   email: string;
@@ -33,6 +33,10 @@ export interface PersonalInformations {
   weight: number;
   height: number;
   birthDate: Date;
+
+  constructor() {
+    this.name = '';
+  }
 }
 
 export enum Profession {

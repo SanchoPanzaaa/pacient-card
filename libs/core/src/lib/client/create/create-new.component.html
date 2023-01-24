@@ -1,0 +1,33 @@
+
+<mat-stepper orientation="vertical"
+             [linear]="true"
+             #stepper
+             >
+  <mat-step *ngFor="let form of createNewProps"
+            [stepControl]="form.form">
+
+            <form [formGroup]="form.form">
+
+              <ng-template matStepLabel>{{form.label}}</ng-template>
+
+              <mat-form-field appearance="fill">
+
+                <input matInput placeholder="{{ form.placeholder }}" formControlName="{{ form.key }}" required>
+
+              </mat-form-field>
+
+              <div>
+                <button mat-button matStepperNext (click)="execute(form.form)">Ďalej</button>
+              </div>
+
+            </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Menu</ng-template>
+    <pcard-client-menu></pcard-client-menu>
+    <div>
+
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-stepper>

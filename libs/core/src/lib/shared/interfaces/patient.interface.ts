@@ -1,7 +1,7 @@
 import { HealthProblem, PersonalInformations, Visit } from "../../pacient-list/patient.model";
 import { Diseases } from "./diseases.interface";
 
-export interface PatientModel {
+export class ClientModel {
   id: string;
   personalInformations: PersonalInformations;
 
@@ -12,4 +12,9 @@ export interface PatientModel {
   photos?: [];
 
   gdpr: boolean;
+
+  constructor() {
+    this.id = '';
+    this.personalInformations = new PersonalInformations();
+  }
 }

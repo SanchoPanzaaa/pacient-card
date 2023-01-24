@@ -4,10 +4,8 @@ import { HomeComponent } from './home/home.component';
 
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { LayoutService } from './shared/services/layout.service';
-
-
 
 @NgModule({
   imports: [
@@ -17,9 +15,7 @@ import { LayoutService } from './shared/services/layout.service';
     AngularFireAuthModule,
   ],
   declarations: [HomeComponent],
-  providers: [
-    LayoutService,
-  ],
+  providers: [LayoutService],
   exports: [SharedModule],
 })
 export class CoreModule {}
