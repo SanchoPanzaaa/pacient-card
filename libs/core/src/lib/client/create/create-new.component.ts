@@ -28,7 +28,7 @@ export class ClientCreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.currentStep = +this.sessionService.get('step');
+      this.currentStep = +this.sessionService.get(DbSession.Step);
   }
 
   execute(value: string, key: string, step: number) {
