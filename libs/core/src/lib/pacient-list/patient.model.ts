@@ -18,24 +18,27 @@ export interface Product {
   inWarehouse: number; // how Products of this brand I keep
 }
 
-export interface HealthProblem {
+export interface HealthCondition {
   id: string;
   name: string;
   severity: Severity;
 }
 
 
-export class PersonalInformations {
+export class PersonalInfo {
   name: string;
   phone: string;
   email: string;
-  profession: Profession;
+  profession: string;
   weight: number;
   height: number;
   birthDate: Date;
 
   constructor() {
     this.name = '';
+    this.phone = '';
+    this.email = '';
+    this.profession = '';
   }
 }
 

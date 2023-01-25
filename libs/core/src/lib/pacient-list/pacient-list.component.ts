@@ -32,7 +32,7 @@ export class PacientListComponent {
 
   /* Lifecycle hooks */
   constructor(private patientService: ClientService, private layoutService: LayoutService) {
-    this.data$ = this.patientService.getAllPatients();
+    this.data$ = this.patientService.getAllClients();
 
     /*
      TODO: create lables dynamically from properties by translation outside of the component

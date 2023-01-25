@@ -1,20 +1,22 @@
-import { HealthProblem, PersonalInformations, Visit } from "../../pacient-list/patient.model";
-import { Diseases } from "./diseases.interface";
+import { HealthCondition, PersonalInfo, Visit } from "../../pacient-list/patient.model";
+import { generateId } from "../utils";
+import { Feet } from "./diseases.interface";
 
 export class ClientModel {
   id: string;
-  personalInformations: PersonalInformations;
+  personalInfo: PersonalInfo;
+  feet: Feet[];
 
-  healthProblems: HealthProblem[];
-  diseases: Diseases[];
-
+  healtCondition: HealthCondition[];
   allVisits: Visit[];
   photos?: [];
 
   gdpr: boolean;
 
   constructor() {
-    this.id = '';
-    this.personalInformations = new PersonalInformations();
+    this.id = generateId();
+    this.personalInfo = new PersonalInfo();
+    this.feet = [new Feet(this.id), new Feet(this.id)]
   }
 }
+

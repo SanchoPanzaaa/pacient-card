@@ -1,4 +1,4 @@
-import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { FormControl, FormGroup } from "@angular/forms";
 
 export class CreateNewFormStepper {
   step: number;
@@ -30,20 +30,11 @@ export const CreateNewFormDefault: CreateNewFormStepper[] = [
   {
     step : 3,
     label: 'Ľavá noha',
-    key: 'left-feet',
+    key: 'feet',
     form: new FormGroup({
-      'left-feet': new FormControl()
+      'feet': new FormControl()
     }),
-    placeholder: 'meno',
-  },
-  {
-    step : 4,
-    label: 'Pravá noha',
-    key: 'right-feet',
-    form: new FormGroup({
-      'right-feet': new FormControl()
-    }),
-    placeholder: 'meno',
+    placeholder: 'Nohy',
   },
 
 ]

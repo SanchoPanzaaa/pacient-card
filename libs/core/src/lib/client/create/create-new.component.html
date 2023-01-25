@@ -2,22 +2,27 @@
 <mat-stepper orientation="vertical"
              [linear]="true"
              #stepper
-             >
-  <mat-step *ngFor="let form of createNewProps"
-            [stepControl]="form.form">
+             [selectedIndex]="currentStep">
+  <mat-step *ngFor="let step of createNewProps; index as i"
+            [stepControl]="step.form">
 
-            <form [formGroup]="form.form">
+            <form [formGroup]="step.form">
 
-              <ng-template matStepLabel>{{form.label}}</ng-template>
+              <ng-template matStepLabel>{{step.label}}</ng-template>
 
               <mat-form-field appearance="fill">
 
-                <input matInput placeholder="{{ form.placeholder }}" formControlName="{{ form.key }}" required>
+                <input matInput placeholder="{{ step.placeholder }}" formControlName="{{ step.key }}" required>
 
               </mat-form-field>
 
               <div>
-                <button mat-button matStepperNext (click)="execute(form.form)">Ďalej</button>
+                <button mat-button matStepperNext
+                        (click)="execute( step.form.get(step.key)?.value,
+                                          step.key,
+                                          i)">
+                                          Ďalej
+                </button>
               </div>
 
             </form>

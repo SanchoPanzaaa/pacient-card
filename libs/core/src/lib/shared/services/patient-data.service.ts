@@ -11,8 +11,8 @@ import { ClientModel } from '../interfaces/patient.interface';
 export class ClientService {
   constructor(private authService: AuthService, private db: AngularFirestore) {}
 
-  createNewPatient(data: ClientModel) {
-    return from(this.db.collection('patients').add({
+  createClient(data: Partial<ClientModel>) {
+    return from(this.db.collection('clients').add({
       ...data,
     }))
   }
@@ -29,14 +29,14 @@ export class ClientService {
   /**
    * Get all patients in the system
    */
-  getAllPatients(): Observable<ClientModel[]> {
-    return this.db.collection<ClientModel>('patients').valueChanges()
+  getAllClients(): Observable<ClientModel[]> {
+    return this.db.collection<ClientModel>('clients').valueChanges()
   }
 
   /**
    * Run a batch write to change the priority of each board for sorting
    */
-  sortPatients(patients: ClientModel[]) {
+  sortClients(patients: ClientModel[]) {
     const db = firebase.firestore();
     const batch = db.batch();
     const refs = patients.map(patient => db.collection('patients')
