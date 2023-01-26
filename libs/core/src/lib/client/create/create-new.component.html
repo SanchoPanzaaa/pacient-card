@@ -1,0 +1,38 @@
+
+<mat-stepper orientation="vertical"
+             [linear]="true"
+             #stepper
+             [selectedIndex]="currentStep">
+  <mat-step *ngFor="let step of createNewProps; index as i"
+            [stepControl]="step.form">
+
+            <form [formGroup]="step.form">
+
+              <ng-template matStepLabel>{{step.label}}</ng-template>
+
+              <mat-form-field appearance="fill">
+
+                <input matInput placeholder="{{ step.placeholder }}" formControlName="{{ step.key }}" required>
+
+              </mat-form-field>
+
+              <div>
+                <button mat-button matStepperNext
+                        (click)="execute( step.form.get(step.key)?.value,
+                                          step.key,
+                                          i)">
+                                          Ďalej
+                </button>
+              </div>
+
+            </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Menu</ng-template>
+    <pcard-client-menu></pcard-client-menu>
+    <div>
+
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-stepper>

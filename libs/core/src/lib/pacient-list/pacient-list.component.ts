@@ -4,8 +4,8 @@ import { Component, ViewChild } from "@angular/core";
 import { MatSort } from "@angular/material/sort";
 import { Observable } from "rxjs";
 import { LayoutEnum } from "../shared/interfaces/layout.enum";
-import { PatientModel } from "../shared/interfaces/patient.interface";
-import { PatientDataService } from "../shared/services/patient-data.service";
+import { ClientModel } from "../shared/interfaces/patient.interface";
+import { ClientService } from "../shared/services/patient-data.service";
 import { LayoutService } from "../shared/services/layout.service";
 import { tableDefPatient, TableHeader } from "./patient.model";
 
@@ -24,15 +24,15 @@ import { tableDefPatient, TableHeader } from "./patient.model";
 export class PacientListComponent {
   @ViewChild(MatSort, {static: false}) sort!: MatSort;
 
-  protected data$: Observable<PatientModel[]>;
+  protected data$: Observable<ClientModel[]>;
 
-  protected selectedRow: PatientModel | null = null;
+  protected selectedRow: ClientModel | null = null;
   protected tableDef: TableHeader[];
   protected columnsWithExtend: string[];
 
   /* Lifecycle hooks */
-  constructor(private patientService: PatientDataService, private layoutService: LayoutService) {
-    this.data$ = this.patientService.getAllPatients();
+  constructor(private patientService: ClientService, private layoutService: LayoutService) {
+    this.data$ = this.patientService.getAllClients();
 
     /*
      TODO: create lables dynamically from properties by translation outside of the component
@@ -45,7 +45,7 @@ export class PacientListComponent {
 
 
   /* scope FUNCTIONS */
-  protected execute(row: PatientModel) {
+  protected execute(row: ClientModel) {
     console.log(row)
     this.selectedRow = row;
   }
