@@ -1,4 +1,22 @@
+$color-primary: #67B3F9;
+$color-secondary: #2F62D7;
+$color-terciary: #11283C;
+$color-quatro: #E3F5FE;
+
+:host {
+  font-family: open-sans;
+}
+
+.mat-toolbar {
+    font-family: open-sans;
+    font-size: 1.5em;
+    background-color: $color-primary;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
 .sidenav-container {
+  background: $color-quatro;
   height: 100vh;
   width: 100vw;
 }
@@ -20,7 +38,7 @@
 }
 
 .sidenav .mat-toolbar {
-  background: inherit;
+  background: $color-primary;
 }
 
 .mat-toolbar.mat-primary {

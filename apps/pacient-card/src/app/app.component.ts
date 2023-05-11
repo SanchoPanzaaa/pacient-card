@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'pacient-card-root',
+  selector: 'pcard-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

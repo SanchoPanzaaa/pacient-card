@@ -9,13 +9,13 @@ const routes: Routes = [
     loadChildren: () => import('@pacient-card/core').then(m => m.AuthModule)
   },
   {
-    path: 'list-pacient',
+    path: 'client-list',
     loadChildren: () => import('@pacient-card/core').then(m => m.PacientListModule)
   },
-  {
-    path: 'client-create',
-    loadChildren: () => import('@pacient-card/core').then(m => m.ClientModule)
-  },
+  // {
+  //   path: 'client-create',
+  //   //loadChildren: () => import('@pacient-card/core').then(m => m.ClientModule)
+  // },
 ];
 
 @NgModule({
