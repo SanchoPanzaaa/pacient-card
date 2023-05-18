@@ -1,1 +1,69 @@
-<p>textbox works!</p>
+<div  class="textbox">
+
+  <div class="input-container"
+       >
+    
+    <div class="elements-container"
+        [class.focused]="focusState"
+        [class.password]="params.password"
+        [class.readonly]="params.readonly"
+        [class.error-state]="!focusState && params.forcedErrorState"
+        [class.warning-state]="params.forcedWarningState"
+
+        >
+          <ng-container *ngIf="params?.leftIcon">
+            <img class="icon left-icon"
+              [class.hide]="hideOnFocus"
+              [uiIcon]="iconLeft"/>
+          </ng-container>
+          <ng-container *ngIf="params?.rightIcon">
+            <img class="icon right-icon"
+              [ngClass]="getElementPosition('rightIcon')"
+              [uiIcon]="iconRight"/>
+          </ng-container>
+
+          <ng-container *ngIf="params?.showDeleteButton ">
+            <img class="icon cancel"
+              [ngClass]="getElementPosition('showDeleteButton')"
+              [uiIcon]="clearIcon"
+              (click)="clearInput()"
+            />
+          </ng-container>
+
+          <ng-container *ngIf="passwordInput?.showVisibleIcon">
+            <img class="icon display"
+              [ngClass]="getElementPosition('password')"
+              [uiIcon]="displayIcon"
+              (click)="showPassword()"
+            />
+          </ng-container>
+
+          <ng-container *ngIf="params?.innerDescription">
+            <div class="inner-description"
+              [ngClass]="getElementPosition('innerDescription')"
+            >
+              <span >{{params.innerDescription}}</span>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="focusState">
+            <lib-focus-indicator [state]="focusIndicatorState"></lib-focus-indicator>
+          </ng-container>
+    </div>
+      <input
+
+      #inputField
+      [type]="inputType"
+      [value]="value ? value : null"
+      (focus)="onFocus()"
+      (blur)="onFocusOut()"
+      (input)="onInputChange($event)"
+      (keydown)="onKeyDown($event)"
+      [placeholder]="params.placeholder"
+      [disabled]="params.readonly"
+
+      [class.padding-long]="params.leftIcon"
+      />
+  </div>
+</div>
+
+

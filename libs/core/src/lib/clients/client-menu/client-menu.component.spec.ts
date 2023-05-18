@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TextboxComponent } from './textbox.component';
+import { ClientMenuComponent } from './client-menu.component';
 
-describe('TextboxComponent', () => {
-  let component: TextboxComponent;
-  let fixture: ComponentFixture<TextboxComponent>;
+describe('ClientMenuComponent', () => {
+  let component: ClientMenuComponent;
+  let fixture: ComponentFixture<ClientMenuComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TextboxComponent ]
+      declarations: [ ClientMenuComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TextboxComponent);
+    fixture = TestBed.createComponent(ClientMenuComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

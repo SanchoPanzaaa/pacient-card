@@ -1,0 +1,20 @@
+<mat-card>
+
+  <div class="section" [formGroup]="clientForm">
+    <div class="title">Vytvorit noveho klienta</div>
+    <ui-textbox [params]="nameConfig" (valueChange)="nameChanged($event)" formControlName="name" ></ui-textbox>
+    <ui-textbox [params]="phoneConfig" (valueChange)="phoneChanged($event)" formControlName="phone"></ui-textbox>
+
+    <!-- <span class="line"></span> -->
+    <div class="button-group">
+      <button (click)="onBack()" class="button">
+        <span>Spat</span>
+      </button>
+      <button (click)="onSubmit()" class="button">
+        <span>Zaevidovat</span>
+      </button>
+  </div>
+  </div>
+
+
+</mat-card>

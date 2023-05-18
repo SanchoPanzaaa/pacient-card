@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class ButtonComponent {
 
+
+  onSubmit(event: Event) {
+    event.preventDefault();
+    console.log('Button clicked');
+  }
 }

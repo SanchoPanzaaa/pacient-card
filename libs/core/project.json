@@ -7,9 +7,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
         "jestConfig": "libs/core/jest.config.ts",
         "passWithNoTests": true
@@ -18,11 +16,42 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/core/**/*.ts",
-          "libs/core/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/core/**/*.ts", "libs/core/**/*.html"]
       }
+    },
+    "build": {
+      "assets": [
+        {
+          "glob": "**/*",
+          "input": "libs/reusable-ui/src/lib/assets",
+          "output": "/assets/"
+        },
+        {
+          "glob": "**/*",
+          "input": "libs/reusable-ui/src/lib/assets",
+          "output": "/assets/"
+        },
+        {
+          "glob": "**/*",
+          "input": "../../libs/reusable-ui/src/lib/assets",
+          "output": "/assets/"
+        },
+        {
+          "glob": "**/*",
+          "input": "../../libs/reusable-ui/src/lib/assets",
+          "output": "/assets/"
+        },
+        {
+          "glob": "**/*",
+          "input": "../../libs/reusable-ui/src/lib/assets",
+          "output": "/assets/"
+        },
+        {
+          "glob": "**/*",
+          "input": "../../libs/reusable-ui/src/lib/assets",
+          "output": "/assets/"
+        }
+      ]
     }
   },
   "tags": []

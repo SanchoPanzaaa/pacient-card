@@ -12,10 +12,10 @@ const routes: Routes = [
     path: 'client-list',
     loadChildren: () => import('@pacient-card/core').then(m => m.PacientListModule)
   },
-  // {
-  //   path: 'client-create',
-  //   //loadChildren: () => import('@pacient-card/core').then(m => m.ClientModule)
-  // },
+  {
+    path: 'client-create',
+    loadChildren: () => import('@pacient-card/core').then(m => m.ClientModule)
+  },
 ];
 
 @NgModule({

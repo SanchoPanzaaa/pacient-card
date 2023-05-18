@@ -1,1 +1,48 @@
-<p>tooltip works!</p>
+
+  <div #tooltipEl *ngIf="tooltip" class="tooltip" [ngClass]="[
+    'tooltip-' + tooltip.position.toLowerCase(),
+    'tooltip-' + tooltip.color?.toLowerCase(),
+    'tooltip-' + (tooltip.color !== 'Default' ? 'start' : ''),
+    ]"
+    [class.array-content]="tooltip.type === typeArray"
+    [class.classic-content]="tooltip.type !== typeArray"
+    [class.overflow-y]="tooltipArray && tooltipArray.length > 4"
+   >
+
+  <ng-container [ngSwitch]="tooltip.type">
+    <ng-container *ngSwitchCase="typeArray">
+        <li  *ngFor="let item of tooltipArray" class="array-item overflow">{{ item }}</li>
+        <div class="dots">...</div>
+    </ng-container>
+    <ng-container *ngSwitchCase="typeObject">
+        <div #contentEl
+          class="content-wrapper overflow"
+        >
+      <ng-container *ngIf="tooltip.icon"><img class="icon" [uiIcon]="tooltip.icon" /></ng-container>
+      <span class="content overflow">{{ tooltip.content }}</span>
+
+      </div>
+
+      <div  #descriptionEl
+            *ngIf="tooltip.description"
+            class="description overflow">
+            {{ tooltip.description }}
+      </div>
+
+    </ng-container>
+    <ng-container *ngSwitchCase="typeTemplate">
+      <ng-container
+        *ngTemplateOutlet="templateRef">
+      </ng-container>
+    </ng-container>
+  </ng-container>
+
+
+
+
+
+
+</div>
+
+
+

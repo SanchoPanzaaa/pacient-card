@@ -25,21 +25,15 @@ export interface HealthCondition {
 }
 
 
-export class PersonalInfo {
+export interface PersonalInfo {
+  id?: string;
   name: string;
   phone: string;
-  email: string;
-  profession: string;
-  weight: number;
-  height: number;
-  birthDate: Date;
-
-  constructor() {
-    this.name = '';
-    this.phone = '';
-    this.email = '';
-    this.profession = '';
-  }
+  email?: string;
+  profession?: string;
+  weight?: number;
+  height?: number;
+  birthDate?: Date;
 }
 
 export enum Profession {

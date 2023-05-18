@@ -18,7 +18,8 @@
     "paths": {
       "@pacient-card": ["libs/eshop/src/index.ts"],
       "@pacient-card/core": ["libs/core/src/index.ts"],
-      "@pacient-card/reusable-ui": ["libs/reusable-ui/src/index.ts"]
+      "@pacient-card/reusable-ui": ["libs/reusable-ui/src/index.ts"],
+      "@pacient-card/shared/assets": ["libs/shared/assets/src/index.ts"]
     }
   },
   "exclude": ["tmp"]

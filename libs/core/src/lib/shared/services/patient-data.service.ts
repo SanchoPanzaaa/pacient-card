@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import firebase from "firebase/compat/app";
-import { from, map, Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';
 import { ClientModel } from '../interfaces/patient.interface';
+import { PersonalInfo } from '../../pacient-list/patient.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { ClientModel } from '../interfaces/patient.interface';
 export class ClientService {
   constructor(private authService: AuthService, private db: AngularFirestore) {}
 
-  createClient(data: Partial<ClientModel>) {
+  createClient(data: Partial<PersonalInfo>) {
     return from(this.db.collection('clients').add({
       ...data,
     }))
@@ -44,5 +45,9 @@ export class ClientService {
     refs.forEach((ref, idx) =>
       batch.update(ref, { priority: idx }));
     batch.commit();
+  }
+
+  getClientById(id: string): Observable<PersonalInfo | undefined> {
+    return this.db.collection<PersonalInfo | undefined>('clients').doc(id).valueChanges();
   }
 }

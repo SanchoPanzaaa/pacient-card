@@ -16,13 +16,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NavigationComponent } from './navigation/navigation.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
-import { ReusableUiModule } from '@pacient-card/reusable-ui';
 
 
 const components = [NavigationComponent]
 
 const modules = [
-  ReusableUiModule,
   CommonModule,
   MatButtonModule,
   MatToolbarModule,

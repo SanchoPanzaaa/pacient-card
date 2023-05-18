@@ -11,6 +11,7 @@
       "options": {
         "project": "libs/reusable-ui/ng-package.json"
       },
+
       "configurations": {
         "production": {
           "tsConfig": "libs/reusable-ui/tsconfig.lib.prod.json"

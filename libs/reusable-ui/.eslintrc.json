@@ -9,6 +9,25 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          {
+            "argsIgnorePattern": "^_"
+          }
+        ],
+        "no-empty-function": [
+          "error",
+          {
+            "allow": ["methods"]
+          }
+        ],
+        "no-constant-condition": [
+          "error",
+          {
+            "checkLoops": false,
+            "allow": ["some-constant-condition"]
+          }
+        ],
         "@angular-eslint/directive-selector": [
           "error",
           {
